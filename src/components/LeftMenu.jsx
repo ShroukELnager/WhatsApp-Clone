@@ -35,7 +35,7 @@ export default function LeftMenu() {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen bg-white min-w-[240px] max-w-[500px] absolute">
+    <div className="flex flex-col h-screen bg-white min-w-[240px] max-w-[500px] ">
       <div className="flex justify-between p-3">
         <div className="text-lg">Chats</div>
         <div className="flex relative">
