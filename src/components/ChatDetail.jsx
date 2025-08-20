@@ -68,7 +68,7 @@ export default function ChatDetail() {
         <div className="flex flex-col h-screen border-l border-gray-300 ">
 
             {/* Navbar */}
-            <div className="flex-shrink-0 flex items-center justify-between h-[65px] mt-[42px] bg-white px-4 border-b border-gray-300">
+            <div className="flex-shrink-0 flex items-center justify-between h-[65px] mt-[52px] bg-white px-4 border-b border-gray-300">
                 {/* Profile Info */}
                 <div className="flex items-center space-x-3">
                     <img
