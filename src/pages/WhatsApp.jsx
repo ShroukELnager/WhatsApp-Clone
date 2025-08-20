@@ -26,7 +26,7 @@ export default function WhatsApp() {
       {/* Main content */}
       <div className="flex flex-row flex-1 overflow-hidden h-[calc(100vh-3rem)]">
         {/* Sidebar */}
-        <div className="w-8 flex flex-col justify-between items-center p-1 bg-[#F3F3F3] h-full">
+        <div className="w-8 flex flex-col justify-between items-center p-2 bg-[#F3F3F3] h-full">
           {/* top icons */}
           <div className="flex flex-col items-center">
             <RoundedBtn icon={<IoChatbubbleOutline size={20} />} />
@@ -44,7 +44,7 @@ export default function WhatsApp() {
             <RoundedBtn icon={<CiSettings size={20} />} />
 
             {/* Profile image as icon */}
-            <button className="w-10 h-10 rounded-full overflow-hidden hover:opacity-80 transition">
+            <button className="w-8 h-8 rounded-full overflow-hidden hover:opacity-80 transition">
               <img
                 src={cat}
                 alt="profile"
