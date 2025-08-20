@@ -16,17 +16,17 @@ import { cat} from '../assets/whatsapp';
 
 export default function WhatsApp() {
   return (
-    <div className="flex flex-col h-screen bg-[#F3F3F3] overflow-hidden ">
+    <div className="flex flex-col h-screen bg-[#F3F3F3] overflow-hidden">
       {/* Header */}
-      <div className="flex items-center ml-1  ">
+      <div className="flex items-center ml-1 h-12">
         <RoundedBtn icon={<FaWhatsapp size={24} color="#4DA07A" />} />
         <span className="text-[15px] text-gray-800 ml-1">WhatsApp</span>
       </div>
 
       {/* Main content */}
-      <div className="flex flex-row flex-1 overflow-hidden">
+      <div className="flex flex-row flex-1 overflow-hidden h-[calc(100vh-3rem)]">
         {/* Sidebar */}
-        <div className="w-[50px] flex flex-col justify-between items-center p-2 bg-[#F3F3F3] ">
+        <div className="w-[50px] flex flex-col justify-between items-center p-2 bg-[#F3F3F3] h-full">
           {/* top icons */}
           <div className="flex flex-col items-center">
             <RoundedBtn icon={<IoChatbubbleOutline size={20} />} />
@@ -55,16 +55,17 @@ export default function WhatsApp() {
         </div>
 
         {/* LeftMenu */}
-        <div className="bg-white min-w-[300px] max-w-[380px] flex flex-col rounded-l-[20px] overflow-hidden">
+        <div className="bg-white min-w-[300px] max-w-[380px] flex flex-col rounded-l-[20px] overflow-hidden h-full">
           <LeftMenu />
         </div>
 
         {/* ChatDetail */}
-        <div className="bg-[#222f35] flex-1 rounded-r-[20px] overflow-hidden ml-[69px]">
+        <div className="bg-[#222f35] flex-1 rounded-r-[20px] overflow-hidden  h-full">
           <ChatDetail />
         </div>
       </div>
     </div>
   );
 }
+
 
