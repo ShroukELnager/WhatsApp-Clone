@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { chatsData } from '../data/whatsapp';
 import Chat from './chat';
-
-export default function ChatsWithFilter({ searchTerm }) {
+export default function ChatsWithFilter({ searchTerm, onContextMenu }) {
   const [chats] = useState(chatsData);
 
   const filteredChats = chats.filter(chat =>
@@ -23,6 +22,7 @@ export default function ChatsWithFilter({ searchTerm }) {
             active={i === 3}
             bio={chat.bio}
             key={i}
+            onContextMenu={(e) => onContextMenu && onContextMenu(e, chat)} // ✅ هنا
           />
         ))
       ) : (

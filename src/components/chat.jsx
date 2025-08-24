@@ -1,9 +1,10 @@
-export default function Chat({ pp, contact, msg, time, unreadMsgs, active,bio }) {
+export default function Chat({ pp, contact, msg, time, unreadMsgs, active, bio, onContextMenu }) {
   return (
     <div className="px-3 py-1">
       <div
         className={`flex flex-row items-center p-3 rounded-lg transition-colors
         ${active ? "bg-gray-200" : "hover:bg-gray-100"}`}
+        onContextMenu={onContextMenu} // 👈 هنا نمسك كليك يمين
       >
         {/* Profile picture */}
         <img src={pp} alt={contact} className="w-10 h-10 rounded-full mr-3" />
