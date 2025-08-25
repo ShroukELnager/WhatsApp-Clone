@@ -78,7 +78,7 @@ export default function ChatDetail() {
 
   // Fetch emojis from API
   useEffect(() => {
-    fetch("https://emoji-api.com/emojis?access_key=61fd6b21a58ce59d14a3fa1cfc6e37c787e50d08")
+    fetch("https://emoji-api.com/emojis?access_key=ee0105bc430ec087e9698be8aec2881b534d2730")
       .then((res) => res.json())
       .then((data) => Array.isArray(data) && setEmojis(data))
       .catch(() => setEmojis([]));

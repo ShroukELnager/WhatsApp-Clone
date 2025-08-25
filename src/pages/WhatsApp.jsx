@@ -1,5 +1,5 @@
 // WhatsApp.jsx
-import React from 'react'
+import React, { useEffect } from 'react'
 import LeftMenu from '../components/LeftMenu'
 import ChatDetail from '../components/ChatDetail'
 import RoundedBtn from '../components/commen/RoundedBtn'
@@ -12,9 +12,25 @@ import { AiOutlineStar } from "react-icons/ai";
 import { GoArchive } from "react-icons/go";
 import { CiSettings } from "react-icons/ci";
 import { IoChatbubbleOutline } from "react-icons/io5";
-import { cat} from '../assets/whatsapp';
-
+import { cat } from '../assets/whatsapp';
+import { useDispatch, useSelector } from 'react-redux';
+import FavouritesList from '../components/favouritesList';
+import { changeActivePage } from '../store/activePage';
 export default function WhatsApp() {
+
+const activePage = useSelector((state) => state.ActivePage.activePage);
+    const dispatch =useDispatch()
+
+
+  const handleChange = () => {
+    dispatch(changeActivePage("chat"));
+    console.log("clicked, will change to chat");
+  };
+
+  useEffect(() => {
+    console.log("ActivePage Changed:", activePage);
+  }, [activePage]);
+
   return (
     <div className="flex flex-col h-screen bg-[#F3F3F3] overflow-hidden">
       {/* Header */}
@@ -30,7 +46,7 @@ export default function WhatsApp() {
           {/* top icons */}
           <div className="flex flex-col items-center">
             <RoundedBtn icon={<IoChatbubbleOutline size={20} />} />
-            <RoundedBtn icon={<IoMdMenu size={20} />} />
+            <RoundedBtn icon={<IoMdMenu size={20}  onClick={()=>{handleChange()}}/>} />
             <RoundedBtn icon={<IoCallOutline size={20} />} />
             <RoundedBtn icon={<MdOutlineFlipCameraAndroid size={20} />} />
             <RoundedBtn icon={<FaRegCircle size={20} color="blue" />} />
@@ -56,7 +72,11 @@ export default function WhatsApp() {
 
         {/* LeftMenu */}
         <div className="bg-white min-w-[300px] max-w-[380px] flex flex-col rounded-l-[20px] overflow-hidden h-full">
-          <LeftMenu />
+          {activePage === "favourite" ? (
+            <FavouritesList />
+          ) : activePage === "chat" ? (
+            <LeftMenu />
+          ) : null}
         </div>
 
         {/* ChatDetail */}

@@ -26,6 +26,8 @@ import FrequantlyChats from "./frequantlyContact";
 import ChatWithoutFilter from "./ChatWithoutFilter";
 import { createPortal } from "react-dom";
 
+import { useDispatch, useSelector } from 'react-redux';
+import { changeActivePage } from '../store/activePage';
 /* -------------------------------------------------------------------------- */
 /* ✅ Context Menu (appears on right-click on a chat) */
 /* -------------------------------------------------------------------------- */
@@ -127,7 +129,20 @@ export default function LeftMenu() {
 
   const newChatRef = useRef(null);
   const filterRef = useRef(null);
+  
+const activePage = useSelector((state) => state.ActivePage.activePage);
+    const dispatch =useDispatch()
 
+ const handleChange=()=>{
+    
+dispatch(changeActivePage("favourite"));
+console.log("ActivePage:", activePage);
+
+
+  }
+  useEffect(() => {
+  console.log("ActivePage Changed:", activePage);
+}, [activePage]);
   // Context menu handler
   const handleChatContextMenu = (e, chat) => {
     e.preventDefault();
@@ -281,8 +296,9 @@ export default function LeftMenu() {
             <button className="flex items-center gap-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#f0f2f5]">
               <MdOutlineMarkChatUnread size={18} /> Unread
             </button>
-            <button className="flex items-center gap-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#f0f2f5]">
-              <MdFavoriteBorder size={18} /> Favorites
+            <button className="flex items-center gap-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#f0f2f5]"
+                     onClick={()=>{handleChange()}} >
+              <MdFavoriteBorder size={18}/> Favorites
             </button>
             <button className="flex items-center gap-3 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#f0f2f5]">
               <RiContactsLine size={18} /> Contacts
