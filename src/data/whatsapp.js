@@ -42,14 +42,6 @@ export const frequantContact=[{
   },]
 export const chatsData =[
   {
-    pp: cs1,
-    contact: "Coding Spot",
-    msg: "Awesome, thank you!",
-    time: "1:15 pm",
-    unreadMsgs: null,
-    bio: "Coding never stops 💻✨",
-  },
-  {
     pp: chat1,
     contact: "Tom",
     msg: "Coding Spot is fire! 🔥",
@@ -268,12 +260,12 @@ export const messagesData = [
     sent: true,
   },
   {
-    msg: "Coding Spot",
+    msg: "ElzeroTube",
     time: "11:55 am",
     sent: false,
   },
   {
-    msg: "https://www.youtube.com/channel/UCLqXQLK6zKZg0trhanjAkkQ",
+    msg: "https://www.youtube.com/@ElzeroTube",
     isLink: true,
     time: "11:55 am",
     sent: false,

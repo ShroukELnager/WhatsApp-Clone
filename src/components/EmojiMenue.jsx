@@ -4,7 +4,7 @@ export default function EmojiMenu({ onSelect }) {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    fetch("https://emoji-api.com/emojis?access_key=61fd6b21a58ce59d14a3fa1cfc6e37c787e50d08")
+    fetch("https://emoji-api.com/emojis?access_key=224b74748d7520bfec262bd1e1b53f7185925c1")
       .then(res => res.json())
       .then(data => {
         // extract unique groups
