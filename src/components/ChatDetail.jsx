@@ -196,8 +196,8 @@ export default function ChatDetail() {
           {/* Emoji Button */}
           <div className="relative" ref={emjiRef}>
             <RoundedBtn
-              icon={<HiOutlineEmojiHappy size={20} onClick={() => setOpenEmojis(!openEmojis)} />}
-            />
+              icon={<HiOutlineEmojiHappy size={20}  />}
+               onClick={() => setOpenEmojis(!openEmojis)} />
             {openEmojis && (
               <div className="absolute bottom-full mb-2 w-[500px] bg-white border border-gray-300 rounded-lg h-[350px] shadow-lg flex flex-col">
                 <div className="bg-white sticky top-0 z-10 p-3 border-b border-gray-200">

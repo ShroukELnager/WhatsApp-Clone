@@ -1,12 +1,10 @@
-/* font -> Roboto */
+/* Roboto font - must be first for PostCSS */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
 
 /* tailwindcss */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 /* all */
 * {
@@ -34,7 +32,7 @@ body {
   display: none;
 }
 
-/* ancher tag */
+/* anchor tags */
 a,
 a:hover,
 a:focus,
@@ -44,8 +42,6 @@ a:active {
 }
 
 /* media queries */
-
-/* >= 768px */
 @media screen and (min-width: 768px) {
   html {
     font-size: 110%;

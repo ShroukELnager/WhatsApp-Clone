@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import ActivePageSlice from './activePage';
+import ArchiveSlice from './ArchiveSlice';
+import UnreadSlice from './unreadList';
 import FavouriteSlice from './FavouriteSlice'
-import ActivePageSlice from './activePage'
-import ArchiveSlice from './ArchiveSlice'
-import UnreadSlice from './unreadList'
 
 
 const store =configureStore({
