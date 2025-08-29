@@ -21,7 +21,7 @@ import LoadingPage from '../components/LoadingePage';
 
 export default function WhatsApp() {
   const [progress, setProgress] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const activePage = useSelector((state) => state.ActivePage.activePage);
   const dispatchActivePage = useDispatch();
   const ArchiveCounter = useSelector((state) => state.Archive.counter);
@@ -30,17 +30,17 @@ export default function WhatsApp() {
     dispatchActivePage(changeActivePage("Chat"));
   };
 
-  // useEffect(() => {
-  //   const id = setTimeout(() => {
-  //     if (progress >= 100) setLoading(false);
-  //     else {
-  //       const increment = Math.floor(Math.random() * 10) + 7;
-  //       setProgress(progress + increment);
-  //     }
-  //   }, 300);
+  useEffect(() => {
+    const id = setTimeout(() => {
+      if (progress >= 100) setLoading(false);
+      else {
+        const increment = Math.floor(Math.random() * 10) + 7;
+        setProgress(progress + increment);
+      }
+    }, 300);
 
-  //   return () => clearTimeout(id);
-  // }, [progress]);
+    return () => clearTimeout(id);
+  }, [progress]);
 
   return (
     <>

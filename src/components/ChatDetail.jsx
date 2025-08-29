@@ -202,11 +202,11 @@ export default function ChatDetail() {
                         key={emoji.slug || i}
                         className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded"
                         onClick={() => {
-                          inputRef.current.value += emoji.emoji;
+                          inputRef.current.value += emoji.character;
                           setTyping(true);
                         }}
                       >
-                        {emoji.emoji}
+                        {emoji.character}
                       </button>
                     ))}
                   </div>
