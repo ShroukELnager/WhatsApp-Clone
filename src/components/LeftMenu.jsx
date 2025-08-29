@@ -206,7 +206,6 @@ export default function LeftMenu() {
         <MdFavoriteBorder size={18} /> Favorites
       </button>
 
-      {/* Disabled options from here */}
       <button
         disabled
         className="flex items-center gap-3 w-full text-left px-4 py-2 text-sm text-gray-500 opacity-80 cursor-not-allowed"
