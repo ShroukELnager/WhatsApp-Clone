@@ -13,7 +13,7 @@ export default function FavouritesList() {
 
       <div className="flex-1">
         {Favourites.length === 0 ? (
-          <p className="text-center mt-10 text-gray-500 text-lg font-medium">
+          <p className="text-center mt-32 text-gray-500 text-lg font-medium">
             No Favourites yet
           </p>
         ) : (

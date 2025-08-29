@@ -13,7 +13,7 @@ export default function ArchiveList() {
 
       <div className="flex-1">
         {archiveList.length === 0 ? (
-          <p className="text-center mt-10 text-gray-500 text-lg font-medium">
+          <p className="text-center mt-32 text-gray-500 text-lg font-medium">
             No archives yet
           </p>
         ) : (
