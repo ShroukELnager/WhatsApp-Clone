@@ -13,7 +13,7 @@ function LoadingPage({ progress }) {
             {/* Loading bar */}
             <div className="w-[320px] h-[3px] bg-[#d9dadc] rounded-full overflow-hidden mb-6">
                 <div
-                    className="h-full bg-[#4daf7c] transition-all duration-300"
+                    className="h-full bg-[#4daf7c]  transition-all duration-300 ease-in-out"
                     style={{ width: `${progress}%` }}
                 ></div>
             </div>
