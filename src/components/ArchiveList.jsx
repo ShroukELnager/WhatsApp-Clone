@@ -1,24 +1,24 @@
-// src/components/FavouritesList.jsx
+// src/components/ArchiveList.jsx
 import React from "react";
 import { useSelector } from "react-redux";
 import TopNAvBar from "./TopNav";
-import Chat from "./chat";
+import Chat from "./chat"; 
 
-export default function FavouritesList() {
-  const Favourites = useSelector((state) => state.Favourite.Favourites);
+export default function ArchiveList() {
+  const archiveList = useSelector((state) => state.Archive.archiveList);
 
   return (
-    <div className="flex flex-col h-10">
+    <div className="flex flex-col h-10 ">
       <TopNAvBar />
 
       <div className="flex-1">
-        {Favourites.length === 0 ? (
+        {archiveList.length === 0 ? (
           <p className="text-center mt-10 text-gray-500 text-lg font-medium">
-            No Favourites yet
+            No archives yet
           </p>
         ) : (
           <div className="w-full">
-            {Favourites.map((chat, i) => (
+            {archiveList.map((chat, i) => (
               <Chat
                 key={i}
                 pp={chat.pp}
@@ -27,7 +27,7 @@ export default function FavouritesList() {
                 time={chat.time}
                 unreadMsgs={chat.unreadMsgs}
                 bio={chat.bio}
-                isFavourite={true} 
+                isArchived={true} 
                 isUnread={chat.isUnread}
               />
             ))}

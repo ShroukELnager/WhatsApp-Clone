@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const ActivePageSlice=createSlice({
     name: "activePage",
-    initialState:{activePage:'chat'},
+    initialState:{activePage:'Chat'},
     reducers:{
         changeActivePage:(state,action)=>{
          state.activePage=action.payload

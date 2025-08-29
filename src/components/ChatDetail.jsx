@@ -145,10 +145,10 @@ export default function ChatDetail() {
         </div>
         <div className="flex items-center space-x-1">
           <div className="flex border rounded-sm">
-            <RoundedBtn icon={<IoVideocamOutline size={20} />} />
-            <RoundedBtn icon={<IoCallOutline size={20} />} />
+            <RoundedBtn icon={<IoVideocamOutline size={20} className="max-sm:hidden" />} />
+            <RoundedBtn icon={<IoCallOutline size={20} className="max-sm:hidden" />} />
           </div>
-          <RoundedBtn icon={<VscSearch size={20} />} />
+          <RoundedBtn icon={<VscSearch size={20} className="max-sm:hidden"/>} />
         </div>
       </div>
 

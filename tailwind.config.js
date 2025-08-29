@@ -8,7 +8,11 @@ export default {
     extend: {
       screens:{
         "whatsapp-bp": "755px",
-      }
+                'max-sm': { 'max': '450px' },
+
+
+      
+        }
     },
   },
   plugins: [],
