@@ -121,7 +121,7 @@ export default function LeftMenu() {
         />
       )}
 
-      {/* ✅ New Chat Dropdown */}
+      {/*  New Chat Dropdown */}
       {openNewChat &&
         createPortal(
           <div className="absolute left-[250px] top-[110px] w-[310px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-[70vh] overflow-y-auto">

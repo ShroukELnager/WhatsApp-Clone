@@ -28,7 +28,7 @@ export default function ChatsWithFilter({ searchTerm, onContextMenu }) {
               msg={chat.msg}
               time={chat.time}
               unreadMsgs={chat.unreadMsgs}
-              active={i === 3}
+              active={i === 2}
               bio={chat.bio}
               key={i}
               isArchived={isArchived}

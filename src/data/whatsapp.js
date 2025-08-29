@@ -37,7 +37,7 @@ export const frequantContact=[{
     contact: "Coders </>",
     msg: "Help me with this bug!! 😭😭",
     time: "10:50 am",
-    unreadMsgs: 23,
+    
     bio: "Eat. Sleep. Code. Repeat 🔁",
   },]
 export const chatsData =[
@@ -46,7 +46,7 @@ export const chatsData =[
     contact: "Tom",
     msg: "Coding Spot is fire! 🔥",
     time: "12:15 pm",
-    unreadMsgs: 2,
+    // unreadMsgs: 2,
     bio: "Living life one coffee at a time ☕",
   },
   {
@@ -54,7 +54,7 @@ export const chatsData =[
     contact: "Girlfriend ❤️",
     msg: "Miss you, call you later!",
     time: "11:11 am",
-    unreadMsgs: 4,
+    // unreadMsgs: 4,
     bio: "Love is all we need ❤️",
   },
   {
@@ -78,7 +78,7 @@ export const chatsData =[
     contact: "Coders </>",
     msg: "Help me with this bug!! 😭😭",
     time: "10:50 am",
-    unreadMsgs: 23,
+    // unreadMsgs: 23,
     bio: "Eat. Sleep. Code. Repeat 🔁",
   },
   {
@@ -86,7 +86,7 @@ export const chatsData =[
     contact: "Mom",
     msg: "Call me son, love you. ❤️",
     time: "10:35 am",
-    unreadMsgs: 2,
+    // unreadMsgs: 2,
     bio: "Home is where mom is 🏡",
   },
   {
@@ -110,7 +110,7 @@ export const chatsData =[
     contact: "Sarah",
     msg: "The test was sooo hard 😓",
     time: "9:47 am",
-    unreadMsgs: 3,
+    // unreadMsgs: 3,
     bio: "Student life 📚",
   },
   {
@@ -126,7 +126,7 @@ export const chatsData =[
     contact: "Best Friend",
     msg: "Wanna hang out? 🍺🍻",
     time: "yesterday",
-    unreadMsgs: 3,
+    // unreadMsgs: 3,
     bio: "Partners in crime 🤝",
   },
   {
@@ -158,7 +158,7 @@ export const chatsData =[
     contact: "Test",
     msg: "Test chat ...",
     time: "yesterday",
-    unreadMsgs: 7,
+    // unreadMsgs: 7,
     bio: "Debug mode on 🐞",
   },
   {
@@ -174,7 +174,7 @@ export const chatsData =[
     contact: "Test",
     msg: "Test chat ...",
     time: "yesterday",
-    unreadMsgs: 7,
+    // unreadMsgs: 7,
     bio: "QA approved ✅",
   },
   {
@@ -190,7 +190,7 @@ export const chatsData =[
     contact: "Test",
     msg: "Test chat ...",
     time: "yesterday",
-    unreadMsgs: 7,
+    // unreadMsgs: 7,
     bio: "Work in progress ⏳",
   },
   {
@@ -206,7 +206,7 @@ export const chatsData =[
     contact: "Test",
     msg: "Test chat ...",
     time: "yesterday",
-    unreadMsgs: 7,
+    // unreadMsgs: 7,
     bio: "Placeholder 🚧",
   },
 ]

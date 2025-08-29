@@ -20,15 +20,15 @@ import { BiPoll } from "react-icons/bi";
 
 import Message from "./message";
 import { getTime } from "../logic/whatsapp";
+import CallEndedModal from "./callModal";
 
 export default function ChatDetail() {
   const [messages, setMessages] = useState(messagesData);
   const [typing, setTyping] = useState(false);
   const [openEmojis, setOpenEmojis] = useState(false);
   const [Emojis, setEmojis] = useState([]);
-  const [selectedGroup, setSelectedGroup] = useState("smileys-emotion");
+  const [selectedGroup, setSelectedGroup] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [openVariant, setOpenVariant] = useState(null);
   const [openAttach, setOpenAttach] = useState(false);
   const [attachedFile, setAttachedFile] = useState(null);
 
@@ -36,16 +36,14 @@ export default function ChatDetail() {
   const bottomRef = useRef(null);
   const emjiRef = useRef(null);
   const fileInputRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   // Add new message to chat
-  const addMessage = (msg) => {
-    setMessages((prev) => [...prev, msg]);
-  };
+  const addMessage = (msg) => setMessages((prev) => [...prev, msg]);
 
   // Detect typing to show send button
-  const handleSwitching = () => {
-    setTyping(inputRef.current.value.length > 0 || attachedFile);
-  };
+  const handleSwitching = () => setTyping(inputRef.current.value.length > 0 || attachedFile);
 
   // Handle sending message
   const handleSubmit = () => {
@@ -57,40 +55,40 @@ export default function ChatDetail() {
       sent: true,
     };
 
-    // Include file if attached
     if (attachedFile) {
       if (attachedFile.type === "image") msgObj.img = attachedFile.url;
       else msgObj.file = { url: attachedFile.url, name: attachedFile.file.name };
     }
 
     addMessage(msgObj);
-
-    // Clear input and attachment after sending
     inputRef.current.value = "";
     setAttachedFile(null);
     setTyping(false);
   };
 
-  // Auto-scroll to bottom when new messages added
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  // Auto-scroll to bottom
+  useEffect(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), [messages]);
 
-  // Fetch emojis from API
+  // Fetch emojis from EmojiHub API
   useEffect(() => {
-    fetch("https://emoji-api.com/emojis?access_key=ee0105bc430ec087e9698be8aec2881b534d2730")
+    fetch("https://emojihub.yurace.pro/api/all?utm_source=chatgpt.com")
       .then((res) => res.json())
-      .then((data) => Array.isArray(data) && setEmojis(data))
+      .then((data) => {
+        const emojisWithChar = data.map((emoji) => ({
+          ...emoji,
+          character: emoji.unicode
+            ? String.fromCodePoint(parseInt(emoji.unicode[0].replace("U+", ""), 16))
+            : emoji.name,
+        }));
+        setEmojis(emojisWithChar);
+      })
       .catch(() => setEmojis([]));
   }, []);
 
-  // Close emoji or attach menus when clicking outside
+  // Close menus when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (emjiRef.current && !emjiRef.current.contains(e.target)) {
-        setOpenEmojis(false);
-        setOpenVariant(null);
-      }
+      if (emjiRef.current && !emjiRef.current.contains(e.target)) setOpenEmojis(false);
       if (openAttach && !e.target.closest(".attach-menu")) setOpenAttach(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -99,11 +97,11 @@ export default function ChatDetail() {
 
   const EmojiGroups = [
     { name: "all", icon: <CiClock2 /> },
-    { name: "smileys-emotion", icon: <MdOutlineEmojiEmotions /> },
-    { name: "people-body", icon: <FaRegLightbulb /> },
-    { name: "animals-nature", icon: <LuDog /> },
-    { name: "food-drink", icon: <CiPizza /> },
-    { name: "travel-places", icon: <MdDirectionsCar /> },
+    { name: "face positive", icon: <MdOutlineEmojiEmotions /> },
+    { name: "face role", icon: <FaRegLightbulb /> },
+    { name: "creature face", icon: <LuDog /> },
+    { name: "drink", icon: <CiPizza /> },
+    { name: "travel and places", icon: <MdDirectionsCar /> },
     { name: "activities", icon: <CiBasketball /> },
     { name: "objects", icon: <FaRegLightbulb /> },
     { name: "symbols", icon: <VscSymbolOperator /> },
@@ -112,8 +110,9 @@ export default function ChatDetail() {
 
   // Filter emojis for current group & search term
   const filteredEmojis = Emojis.filter(
-    (emoji) => (selectedGroup === "all" || emoji.group === selectedGroup) &&
-               emoji.slug.toLowerCase().includes(searchTerm.toLowerCase())
+    (emoji) =>
+      (selectedGroup === "all" || emoji.group === selectedGroup) &&
+      emoji.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Handle file selection
@@ -127,9 +126,8 @@ export default function ChatDetail() {
       url,
       type: file.type.startsWith("image/") ? "image" : "document",
     });
-
     setTyping(true);
-    setOpenAttach(false); // Close menu immediately after selecting file
+    setOpenAttach(false);
   };
 
   return (
@@ -144,11 +142,31 @@ export default function ChatDetail() {
           </div>
         </div>
         <div className="flex items-center space-x-1">
-          <div className="flex border rounded-sm">
-            <RoundedBtn icon={<IoVideocamOutline size={20} className="max-sm:hidden" />} />
-            <RoundedBtn icon={<IoCallOutline size={20} className="max-sm:hidden" />} />
+          {/* Buttons */}
+          <div className="flex border rounded-sm gap-2 px-1 py-1 w-fit items-center">
+            <RoundedBtn
+              icon={<IoVideocamOutline size={20} className="max-sm:hidden" />}
+              onClick={() => setIsModalOpen(true)}
+              className="p-1"
+            />
+
+            {/* Vertical Divider */}
+            <div className="w-px h-6 bg-gray-400"></div>
+
+            <RoundedBtn
+              icon={<IoCallOutline size={20} className="max-sm:hidden" />}
+              onClick={() => setIsModalOpen(true)}
+              className="p-1"
+            />
           </div>
-          <RoundedBtn icon={<VscSearch size={20} className="max-sm:hidden"/>} />
+
+
+          {/* Modal */}
+          <CallEndedModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+          <RoundedBtn icon={<VscSearch size={20} className="max-sm:hidden" />} />
         </div>
       </div>
 
@@ -199,7 +217,7 @@ export default function ChatDetail() {
                   <div className="grid grid-cols-11 gap-1">
                     {filteredEmojis.map((emoji, i) => (
                       <button
-                        key={emoji.slug || i}
+                        key={emoji.name + i}
                         className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded"
                         onClick={() => {
                           inputRef.current.value += emoji.character;
@@ -225,13 +243,11 @@ export default function ChatDetail() {
             <RoundedBtn icon={<GiPaperClip size={20} />} onClick={() => setOpenAttach(!openAttach)} />
             {openAttach && (
               <div className="absolute bottom-full mb-2 left-0 bg-white shadow-lg border border-gray-200 rounded-lg w-48 flex flex-col py-2 z-50">
-                {/* Each option closes menu after selection */}
-                {[
-                  { icon: MdOutlineInsertPhoto, label: "Photos & videos" },
-                  { icon: IoCameraOutline, label: "Camera" },
-                  { icon: IoDocumentTextOutline, label: "Document" },
-                  { icon: BiPoll, label: "Poll" },
-                  { icon: MdOutlineDraw, label: "Drawing" },
+                {[{ icon: MdOutlineInsertPhoto, label: "Photos & videos" },
+                { icon: IoCameraOutline, label: "Camera" },
+                { icon: IoDocumentTextOutline, label: "Document" },
+                { icon: BiPoll, label: "Poll" },
+                { icon: MdOutlineDraw, label: "Drawing" },
                 ].map((item, idx) => (
                   <button
                     key={idx}
